@@ -15,7 +15,6 @@ function handleSearch(input) {
   }
 }
 
-
 function categoryColorOf(element) {
   let hexCode;
 
