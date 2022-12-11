@@ -1,66 +1,108 @@
-const periodicTable = require('periodic-table').all();
+const functions = require('./functions');
 
-const elementBlock = document.getElementsByClassName('element')[0];
-const elementName = document.getElementById('element-name');
-const elementAbbreviation = document.getElementById('abbreviation');
-const atomicNumber = document.getElementById('atomic-number');
-const atomicMass = document.getElementById('atomic-mass');
+const previousElementBlock = document.getElementsByClassName('previous-element')[0];
+const previousElementName = document.getElementsByClassName('previous-element-name')[0];
+const previousElementAbbreviation = document.getElementsByClassName('previous-abbreviation')[0];
+const previousAtomicNumber = document.getElementsByClassName('previous-atomic-number')[0];
+const previousAtomicMass = document.getElementsByClassName('previous-atomic-mass')[0];
+
+const currentElementBlock = document.querySelectorAll('.element');
+const currentElementName = document.querySelectorAll('.element-name');
+const currentElementAbbreviation = document.querySelectorAll('.abbreviation');
+const currentAtomicNumber = document.querySelectorAll('.atomic-number');
+const currentAtomicMass = document.querySelectorAll('.atomic-mass');
+
+const nextElementBlock = document.getElementsByClassName('next-element')[0];
+const nextElementName = document.getElementsByClassName('next-element-name')[0];
+const nextElementAbbreviation = document.getElementsByClassName('next-abbreviation')[0];
+const nextAtomicNumber = document.getElementsByClassName('next-atomic-number')[0];
+const nextAtomicMass = document.getElementsByClassName('next-atomic-mass')[0];
 
 const input = document.getElementsByTagName('input')[0];
 const searchButton = document.getElementById('search-button');
 
-searchButton.addEventListener('click', handleSearch);
-document.addEventListener('keydown', function(e) {
+searchButton.addEventListener('click', searchForElement);
+
+document.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
-    handleSearch();
+    searchForElement();
   }
 });
 
-function handleSearch() {
-  let atomicNumberInput = input.value;
+previousElementBlock.addEventListener('click', () => {
+  let thisAtomicNumber = Number(previousElementBlock.children[0].children[0].innerText);
+  input.value = thisAtomicNumber;
+  searchForElement()
+})
 
-  for (let element of periodicTable) {
-    if (element.atomicNumber == atomicNumberInput) {
-      elementName.innerText = element.name;
-      elementAbbreviation.innerText = element.symbol;
-      atomicNumber.innerText = element.atomicNumber;
-      atomicMass.innerText = element.atomicMass;
+nextElementBlock.addEventListener('click', () => {
+  let thisAtomicNumber = Number(nextElementBlock.children[0].children[0].innerText);
+  input.value = thisAtomicNumber;
+  searchForElement()
+})
 
-      switch (element.groupBlock) {
-        case 'nonmetal':
-          elementBlock.style.backgroundColor = '#2a4065';
-          break;
-        case 'alkali metal':
-          elementBlock.style.backgroundColor = '#234d57';
-          break;
-        case 'alkaline earth metal':
-          elementBlock.style.backgroundColor = '#612e39';
-          break;
-        case 'transition metal':
-          elementBlock.style.backgroundColor = '#433c65';
-          break;
-        case 'metal':
-          elementBlock.style.backgroundColor = '#2f4d47';
-          break;
-        case 'metalloid':
-          elementBlock.style.backgroundColor = '#523e1b';
-          break;
-        case 'noble gas':
-          elementBlock.style.backgroundColor = '#623842';
-          break;
-        case 'lanthanoid':
-          elementBlock.style.backgroundColor = '#004a76';
-          break;
-        case 'actinoid':
-          elementBlock.style.backgroundColor = '#613b27';
-          break;
-      }
+function searchForElement() {
+  let searchResult = functions.handleSearch(Number(input.value));
 
-      if (element.atomicNumber >= 109) {
-        elementBlock.style.backgroundColor = '#46474c';
-      }
-    }
+  if (searchResult.isValid) {
+    currentElementName.forEach((elementName) => {
+      elementName.innerText = searchResult.elementName;
+    })
+
+    currentElementAbbreviation.forEach((elementAbbreviation) => {
+      elementAbbreviation.innerText = searchResult.elementSymbol;
+    })
+
+    currentAtomicNumber.forEach((atomicNumber) => {
+      atomicNumber.innerText = searchResult.atomicNumber;
+    })
+
+    currentAtomicMass.forEach((atomicMass) => {
+      atomicMass.innerText = searchResult.atomicMass;
+    })
+
+    currentElementBlock.forEach((elementBlock) => {
+      elementBlock.style.backgroundColor = functions.categoryColorOf(searchResult);
+    })
   }
 
+  setPreviousElement(Number(input.value));
+  setNextElement(Number(input.value));
+
   input.value = '';
+}
+
+function setPreviousElement(input) {
+  try {
+    let searchResult = functions.handleSearch(input - 1);
+
+    if (searchResult.isValid) {
+      previousElementName.innerText = searchResult.elementName;
+      previousElementAbbreviation.innerText = searchResult.elementSymbol;
+      previousAtomicNumber.innerText = searchResult.atomicNumber;
+      previousAtomicMass.innerText = searchResult.atomicMass;
+      previousElementBlock.style.backgroundColor = functions.categoryColorOf(searchResult);
+      previousElementBlock.style.display = 'block';
+    }
+  } catch(error) {
+    previousElementBlock.style.display = 'none';
+  } 
+}
+
+function setNextElement(input) {
+  try {
+    let searchResult = functions.handleSearch(input + 1);
+
+    if (searchResult.isValid) {
+      nextElementName.innerText = searchResult.elementName;
+      nextElementAbbreviation.innerText = searchResult.elementSymbol;
+      nextAtomicNumber.innerText = searchResult.atomicNumber;
+      nextAtomicMass.innerText = searchResult.atomicMass;
+      nextElementBlock.style.backgroundColor = functions.categoryColorOf(searchResult);
+      nextElementBlock.style.display = 'block';
+    }
+  } catch(error) {
+    nextElementBlock.style.display = 'none';
+    console.log(error);
+  }
 }

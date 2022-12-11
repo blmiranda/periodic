@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  user-select: none;
 }
 
 :root {
@@ -19,7 +20,7 @@ html {
   font-size: 1.6rem;
 }
 
-main {
+.principal {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +28,7 @@ main {
 }
 
 .element {
+  background-color: #2a4065;
   color: rgba(255, 255, 255, 0.83);
   width: 400px;
   height: 400px;
@@ -44,10 +46,10 @@ main {
   font-size: 3rem;
 }
 
-#abbreviation {
+.abbreviation {
   font-size: 25rem;
 }
-#element-name {
+.element-name {
   font-size: 5rem;
 }
 
@@ -98,4 +100,31 @@ input {
 }
 #search-button:hover::before {
   height: 100%;
+}
+
+/*
+=========================
+Element Map
+=========================
+*/
+
+.element-map {
+  position: absolute;
+  top: 50%;
+  right: -80px;
+  transform: translateY(-50%) scale(0.3);
+}
+
+.previous-element,
+.next-element {
+  transform: scale(0.7);
+  cursor: pointer;
+}
+
+.previous-element {
+  display: none;
+}
+
+.next-element {
+  background-color: #623842;
 }
