@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="EN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Periodic</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Periodic</title>
+    <link rel="stylesheet" href="./CSS/index.css" />
 
-  <link rel="stylesheet" href="./CSS/index.css">
+    <script src="./scripts/app.js" defer></script>
+  </head>
 
-  <script src="./scripts/app.js" defer></script>
-</head>
+  <body>
+    <main>
+      <section class="principal">
+        <div class="element">
+          <header>
+            <span class="atomic-number">1</span>
+            <span class="atomic-mass">1.00794(4)</span>
+          </header>
 
-<body>
-  <main>
-    <section class="principal">
-      <div class="element">
-        <header>
-          <span class="atomic-number">1</span>
-          <span class="atomic-mass">1.00794(4)</span>
-        </header>
+          <h2 class="abbreviation">H</h2>
+          <h3 class="element-name">Hydrogen</h3>
+        </div>
 
-        <h2 class="abbreviation">H</h2>
-        <h3 class="element-name">Hydrogen</h3>
-      </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Write an atomic number" />
+          <button id="search-button">Q</button>
+        </div>
+      </section>
 
-      <div class="search-bar">
-        <input type="text" placeholder="Write an atomic number">
-        <button id="search-button">Q</button>
-      </div>
-    </section>
+      <section class="element-map">
+        <div class="previous-element element">
+          <header>
+            <span class="previous-atomic-number atomic-number">1</span>
+            <span class="previous-atomic-mass atomic-mass">1.00794(4)</span>
+          </header>
 
-    <section class="element-map">
-      <div class="previous-element element">
-        <header>
-          <span class="previous-atomic-number atomic-number">1</span>
-          <span class="previous-atomic-mass atomic-mass">1.00794(4)</span>
-        </header>
+          <h2 class="previous-abbreviation abbreviation">H</h2>
+          <h3 class="previous-element-name element-name">Hydrogen</h3>
+        </div>
 
-        <h2 class="previous-abbreviation abbreviation">H</h2>
-        <h3 class="previous-element-name element-name">Hydrogen</h3>
-      </div>
+        <div class="current-element element">
+          <header>
+            <span class="atomic-number">1</span>
+            <span class="atomic-mass">1.00794(4)</span>
+          </header>
 
-      <div class="current-element element">
-        <header>
-          <span class="atomic-number">1</span>
-          <span class="atomic-mass">1.00794(4)</span>
-        </header>
+          <h2 class="abbreviation">H</h2>
+          <h3 class="element-name">Hydrogen</h3>
+        </div>
 
-        <h2 class="abbreviation">H</h2>
-        <h3 class="element-name">Hydrogen</h3>
-      </div>
+        <div class="next-element element">
+          <header>
+            <span class="next-atomic-number atomic-number">2</span>
+            <span class="next-atomic-mass atomic-mass">4.002602(2)</span>
+          </header>
 
-      <div class="next-element element">
-        <header>
-          <span class="next-atomic-number atomic-number">2</span>
-          <span class="next-atomic-mass atomic-mass">4.002602(2)</span>
-        </header>
-
-        <h2 class="next-abbreviation abbreviation">He</h2>
-        <h3 class="next-element-name element-name">Helium</h3>
-      </div>
-    </section>
-  </main>
-</body>
-
+          <h2 class="next-abbreviation abbreviation">He</h2>
+          <h3 class="next-element-name element-name">Helium</h3>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
