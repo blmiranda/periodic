@@ -10,9 +10,9 @@ I was hopping to understand more about bundles and how they work, the different 
 
 So if i have a simple static website with HTML, CSS and JS, and i just want to use some library from NPM in this project even tho it is far from being a node project, that's one simple solution that helped me understand more about bundles at the same time.
 
-Nowadays i just use unpkg and everything works
+Nowadays i just use unpkg and everything works.
 
-So this is the motivation behind the project
+So this is the motivation behind the project.
 
 - I'm using a package from NPM to get all of the periodic table elements
 - Using normal JS but importing data from the package
