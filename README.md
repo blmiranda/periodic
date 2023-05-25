@@ -19,4 +19,4 @@ So this is the motivation behind the project
 - Using normal CSS for styling and animation
 - Using browserify to bundle my main JS file: index.js
 
-https://github.com/brianmirandadev/periodic/assets/94651050/a62021c2-2b25-4e5b-b115-99e480ac185d
+![ezgif com-video-to-gif](https://github.com/brianmirandadev/periodic/assets/94651050/d31ad6ca-e0de-4ee7-b9b4-437720c66988)
